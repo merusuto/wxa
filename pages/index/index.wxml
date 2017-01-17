@@ -1,0 +1,115 @@
+<scroll-view class="table-view" style="height: {{windowHeight}}px;" scroll-y="true" scroll-into-view="{{scrollIntoView}}" bindscroll="onScroll">
+  <button class="scroll-to-top {{scrollToTop ? 'in' : ''}}" bindtap="scrollToTop">
+    <view class="icon icon-up" />
+  </button>
+
+  <view class="table-view-header" id="table-view-header" />
+  <view class="table-view-body">
+    <view class="table-view-item" wx:for="{{visible}}" wx:key="id">
+      <view id="{{item.id}}" catchtap="onItemClick">
+        <image class="media-object thumbnail pull-left" src="https://rhym997.oschina.io/merusuto/data/units/thumbnail/{{item.id}}.png" />
+        <image class="media-object element pull-right" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%3E%3Cpolygon%20points%3D%2740%2C0%2078.04226065180615%2C27.639320225002102%2063.51141009169893%2C72.36067977499789%2016.48858990830108%2C72.36067977499789%201.9577393481938614%2C27.63932022500209%27%20style%3D%27fill%3A%20%23000%3B%20opacity%3A%200.05%3B%27%3E%3C%2Fpolygon%3E%3Cpolygon%20points%3D%2740%2C13.3%2065.3932089850806%2C31.749246250188904%2055.69386623620903%2C61.6007537498111%2024.30613376379097%2C61.6007537498111%2014.606791014919402%2C31.749246250188897%27%20style%3D%27fill%3A%20%23000%3B%20opacity%3A%200.05%3B%27%3E%3C%2Fpolygon%3E%3Cpolygon%20points%3D%2740%2C26.7%2052.64905166672554%2C35.8900739748132%2047.817543855489895%2C50.7599260251868%2032.182456144510105%2C50.7599260251868%2027.35094833327446%2C35.89007397481319%27%20%20style%3D%27fill%3A%20%23000%3B%20opacity%3A%200.05%3B%27%3E%3C%2Fpolygon%3E%3Cpolygon%20points%3D%27{{item.elementPath}}%27%20style%3D%27fill%3A%20{{item.elementColor}}%3B%20opacity%3A%200.5%3B%27%3E%3C%2Fpolygon%3E%3C%2Fsvg%3E" />
+        <view class="media-body">
+          <view class="media-title">
+            <text>{{item.titleString}}</text>
+            <text class="small">{{item.rareString}}</text>
+          </view>
+          <view class="media-info-group">
+            <text class="media-info">生命：{{item.life || '暂缺'}}
+              攻击：{{item.atk || '暂缺'}}
+              攻距：{{item.aarea || '暂缺'}}
+              攻数：{{item.anum || '暂缺'}}
+            </text>
+            <text class="media-info">攻速：{{item.aspd || '暂缺'}}
+              韧性：{{item.tenacity || '暂缺'}}
+              移速：{{item.mspd || '暂缺'}}
+              多段：{{item.hits || '暂缺'}}
+            </text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="table-view-footer" style="height: {{(totalPage - page - perPage) * 100}}px;" />
+</scroll-view>
+
+<view class="modal {{active ? 'active' : ''}}">
+  <swiper class="swiper content" wx:if="{{active}}" catchtap="closeModal" bindchange="onSwiperChange">
+    <view class="icon icon-close pull-right" bindtap="closeModal" />
+    <swiper-item class="swiper-item">
+      <image class="image" mode="aspectFit" src="https://rhym997.oschina.io/merusuto/data/units/original/{{active.id}}.png" />
+    </swiper-item>
+    <swiper-item class="swiper-item">
+      <scroll-view class="media-body" style="height: {{windowHeight}}px;" scroll-y="true">
+        <view class="media-title media-info-group media-content">
+          <text>{{active.titleString}}</text>
+          <text class="small">{{active.rareString}}</text>
+          <text class="small">ID: {{active.id}}</text>
+        </view>
+        <view class="media-info-group media-content">
+          <text class="media-info">初始生命：{{active.lives[0] || '暂缺'}}
+            满级生命：{{active.lives[1] || '暂缺'}}
+            满觉生命：{{active.lives[2] || '暂缺'}}
+            初始攻击：{{active.atks[0] || '暂缺'}}
+            满级攻击：{{active.atks[1] || '暂缺'}}
+            满觉攻击：{{active.atks[2] || '暂缺'}}
+          </text>
+          <text class="media-info">攻距：{{active.aarea || '暂缺'}}
+            攻数：{{active.anum || '暂缺'}}
+            攻速：{{active.aspd || '暂缺'}}
+            韧性：{{active.tenacity || '暂缺'}}
+            移速：{{active.mspd || '暂缺'}}
+            多段：{{active.hits || '暂缺'}}
+          </text>
+        </view>
+        <view class="media-info-group media-content">
+          <text class="media-info">初始DPS：{{active.dpses[0] || '暂缺'}}
+            满级DPS：{{active.dpses[1] || '暂缺'}}
+            满觉DPS：{{active.dpses[2] || '暂缺'}}
+            初始总DPS：{{active.mdpses[0] || '暂缺'}}
+            满级总DPS：{{active.mdpses[1] || '暂缺'}}
+            满觉总DPS：{{active.mdpses[2] || '暂缺'}}
+          </text>
+          <text class="media-info">成长：{{active.type ? ['暂缺', '早熟', '平均', '晚成'][active.type] : '暂缺'}}
+            火：{{active.fireString || '暂缺'}}
+            水：{{active.aquaString || '暂缺'}}
+            风：{{active.windString || '暂缺'}}
+            光：{{active.lightString || '暂缺'}}
+            暗：{{active.darkString || '暂缺'}}
+          </text>
+        </view>
+        <view class="media-info-group media-content">
+          <text class="media-info">国家：{{active.country || '暂缺'}}
+            性别：{{active.gender ? ['暂缺', '不明', '男', '女'][active.gender] : '暂缺'}}
+            年龄：{{active.age ? active.age + '岁' : '暂缺'}}
+          </text>
+          <text class="media-info">职业：{{active.career || '暂缺'}}
+            兴趣：{{active.interest || '暂缺'}}
+            性格：{{active.nature || '暂缺'}}
+          </text>
+        </view>
+
+        <view class="media-content">
+          <view class="media-info-title">获取方式：</view>
+          <text class="media-info">{{active.obtain || '暂缺'}}</text>
+        </view>
+
+        <view class="media-content">
+          <view class="media-info-title">备注：</view>
+          <text class="media-info">{{active.remark || '暂缺'}}</text>
+        </view>
+
+        <view class="media-footer" />
+      </scroll-view>
+
+      <view class="media-info-title contact">
+        <contact-button type="default-light" size="20" session-from="weapp"> 数据有误？点击这里</contact-button>
+      </view>
+    </swiper-item>
+
+    <view class="swiper-pagination">
+      <view class="swiper-pagination-bullet {{activeSwiper === 0 ? 'active' : ''}}" />
+      <view class="swiper-pagination-bullet {{activeSwiper === 1 ? 'active' : ''}}" />
+    </view>
+  </swiper>
+</view>
