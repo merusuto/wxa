@@ -20,8 +20,16 @@
   content: '\e80d';
 }
 
+.icon-bars:before {
+  content: '\e80e';
+}
+
 .icon-close:before {
   content: '\e811';
+}
+
+.icon-search:before {
+  content: '\e819';
 }
 
 .modal.active {
@@ -50,4 +58,173 @@
 
 .content {
   height: 100%;
+}
+
+.btn-group {
+  position: relative;
+  display: table;
+}
+
+.btn-group .btn {
+  display: table-cell;
+  width: 1%;
+}
+
+.bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  height: 44px;
+  padding-right: 10px;
+  padding-left: 10px;
+  backface-visibility: hidden;
+  background-color: #f6f6f6;
+  border-bottom: 0;
+  box-shadow: 0 0 1px rgba(0, 0, 0, .85);
+}
+
+.bar-nav {
+  top: 0;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle:after {
+  display: inline-block;
+  content: " ";
+  position: relative;
+  top: -2px;
+  left: -2px;
+  width: 0px;
+  height: 0px;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 5px 0 5px;
+  border-top-color: #ccc;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  list-style: none;
+  font-size: 16px;
+  text-align: left;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  background-clip: padding-box;
+}
+
+.dropdown-menu .divider {
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 30px;
+  color: #333;
+  white-space: nowrap;
+}
+
+.dropdown-menu li a:hover,
+.dropdown-menu li a:focus {
+  text-decoration: none;
+  color: #262626;
+  background-color: #f5f5f5;
+}
+
+.dropdown-menu li a.active,
+.dropdown-menu li a.active:hover,
+.dropdown-menu li a.active:focus {
+  color: #fff;
+  text-decoration: none;
+  background-color: #007aff;
+}
+
+.dropdown-menu li a.disabled,
+.dropdown-menu li a.disabled:hover,
+.dropdown-menu li a.disabled:focus {
+  color: #777;
+}
+
+.dropdown-menu li a.disabled:hover,
+.dropdown-menu li a.disabled:focus {
+  text-decoration: none;
+  background-color: transparent;
+  background-image: none;
+  cursor: not-allowed;
+}
+
+.dropdown-menu.active {
+  display: block;
+}
+
+.dropdown-header {
+  display: block;
+  padding: 3px 20px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #777;
+  white-space: nowrap;
+}
+
+.dropdown-backdrop {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
+.pull-right .dropdown-menu {
+  right: 0;
+  left: auto;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.dropdown-submenu a.caret:after {
+  display: block;
+  content: " ";
+  float: right;
+  position: relative;
+  top: 10px;
+  right: -10px;
+  width: 0px;
+  height: 0px;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #ccc;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
 }

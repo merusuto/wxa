@@ -1,13 +1,37 @@
-.pull-left {
-  float: left;
+page {
+  background-color: #efeff4;
 }
 
-.pull-right {
-  float: right;
+.bar .icon,
+.bar .dropdown {
+  line-height: 44px;
+  color: #007aff;
+}
+
+.bar .icon {
+  font-size: 24px;
+}
+
+.bar .dropdown.pull-right {
+  margin-right: 15px;
 }
 
 .table-view {
   height: 100%;
+}
+
+.table-view-header {
+  height: 60px;
+}
+
+.table-view-body {
+  background-color: #fff;
+}
+
+.table-view-items {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='1'><rect fill='#c8c7cc' x='0' y='0' width='100%' height='0.5'/></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='1'><rect fill='#c8c7cc' x='0' y='0' width='100%' height='0.5'/></svg>");
+  background-repeat: no-repeat;
+  background-position: 0 100%, 0 0;
 }
 
 .table-view-item {
@@ -156,7 +180,13 @@
   background: #fff;
   opacity: 0.2;
 }
+
 .swiper-pagination .swiper-pagination-bullet.active {
   background: #fff;
   opacity: 0.7;
+}
+
+.dropdown-submenu .dropdown-menu {
+  overflow-y: scroll;
+  max-height: 480px;
 }

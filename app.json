@@ -3,8 +3,9 @@
     "pages/index/index"
   ],
   "window":{
+    "backgroundColor": "#efeff4",
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#f6f6f6",
     "navigationBarTitleText": "梅露可图鉴",
     "navigationBarTextStyle":"black"
   }
