@@ -4,6 +4,7 @@ import '../../utils/polyfill';
 
 Page({
   data: {
+    BASE_DATA_URL: 'https://rhym997.oschina.io/merusuto/data',
     windowHeight: 0,
     scrollToTop: false,
     activeMenu: [],
@@ -77,8 +78,6 @@ Page({
       page,
       totalPage
     });
-
-    console.log("rerender page with:", this.data);
   },
 
   filterData() {
@@ -140,8 +139,8 @@ Page({
   },
 
   closeSearchBar(event) {
-    console.log("closeSearchBar", event)
     this.setData({ activeSearchBar: false, search: false });
+    this.prepareVisibleData();
   },
 
   popMenu() {
@@ -220,7 +219,7 @@ Page({
       success: res => this.setData({ windowHeight: res.windowHeight })
     });
     wx.request({
-      url: 'https://rhym997.oschina.io/merusuto/data/units.json',
+      url: `${this.data.BASE_DATA_URL}/units.json`,
       method: 'GET',
       dataType: 'json',
       success: res => this.prepareData(res.data)
