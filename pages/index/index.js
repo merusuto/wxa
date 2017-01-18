@@ -4,7 +4,7 @@ import '../../utils/polyfill';
 
 Page({
   data: {
-    BASE_DATA_URL: 'https://rhym997.oschina.io/merusuto/data',
+    BASE_DATA_URL: 'https://git.oschina.net/merusuto/data/raw/master',
     windowHeight: 0,
     scrollToTop: false,
     activeMenu: [],
