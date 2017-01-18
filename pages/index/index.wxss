@@ -190,3 +190,33 @@ page {
   overflow-y: scroll;
   max-height: 480px;
 }
+
+.input-icon {
+  position: relative;
+}
+
+.input-icon .icon {
+  position: absolute;
+  top: 0;
+  color: #aaa;
+  font-size: 20px;
+  line-height:29px;
+  padding: 0 10px;
+  z-index: 1;
+}
+
+.input-icon input {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+  border-radius: 20px;
+  background-color: #eee;
+  border-radius: 6px;
+  padding: 0 40px;
+  height: 29px;
+  margin: 6px 0;
+}
+
+.input-icon .pull-right {
+  right: 0;
+}

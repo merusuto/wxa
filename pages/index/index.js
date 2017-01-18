@@ -82,7 +82,7 @@ Page({
   },
 
   filterData() {
-    const { filters } = this.data;
+    const { filters, search } = this.data;
 
     this.filteredData = this.rawData.filter(row => {
       for (const key in filters) {
@@ -108,6 +108,10 @@ Page({
         }
       }
 
+      if (search && row.title.indexOf(search) < 0 && row.name.indexOf(search) < 0) {
+        return false;
+      }
+
       return true;
     });
   },
@@ -131,6 +135,15 @@ Page({
     });
   },
 
+  openSearchBar() {
+    this.setData({ activeSearchBar: true });
+  },
+
+  closeSearchBar(event) {
+    console.log("closeSearchBar", event)
+    this.setData({ activeSearchBar: false, search: false });
+  },
+
   popMenu() {
     const { activeMenu } = this.data;
     const poppedMenuItem = activeMenu.pop();
@@ -147,6 +160,11 @@ Page({
 
   resetFilters(event) {
     this.setData({ filters: {}, activeMenu: [] });
+    this.prepareVisibleData();
+  },
+
+  setSearch(event) {
+    this.setData({ search: event.detail.value });
     this.prepareVisibleData();
   },
 
